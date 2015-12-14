@@ -6,7 +6,7 @@
 
  To run this, install electron and then run in the console
  ```
-cd %lt;PATH_FOR_SAMPLE&gt;
+cd <PATH_FOR_SAMPLE>
 electron .
  ```
 

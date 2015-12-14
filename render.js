@@ -1,14 +1,24 @@
 window.onresize = doLayout;
 
-var _w = window
-var _d = window.document
+
+const remote = require('electron').remote;
+const Menu = remote.Menu;
+const MenuItem = remote.MenuItem;
+
+var menu = new Menu();
+Menu.setApplicationMenu(menu);
+
+window.addEventListener('contextmenu', function (e) {
+  e.preventDefault();
+  menu.popup(remote.getCurrentWindow());
+}, false);
 
 onload = function() {
     var webview = document.querySelector('webview');
 
     webview.addEventListener("dom-ready", function(){
         webview.executeJavaScript('__myYoutubeTools.pauseVideo()')
-        webview.openDevTools();
+        // webview.openDevTools();
     });
 
     doLayout();

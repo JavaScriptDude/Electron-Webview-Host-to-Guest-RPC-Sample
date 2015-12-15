@@ -11,3 +11,5 @@ electron .
  ```
 
  The click on one of the three buttons at the top of the page to Pause, Play or loop play and pause.
+
+ This code is based on the the cool [webview browser](https://github.com/hokein/electron-sample-apps/tree/master/webview/browser) electron sample app written by [hokein](https://github.com/hokein). Props to you @hokein!

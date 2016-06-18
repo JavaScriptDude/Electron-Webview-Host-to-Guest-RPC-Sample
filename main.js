@@ -1,5 +1,5 @@
-var app = require('app');
-var BrowserWindow = require('browser-window');
+var app = require('electron').app;
+var BrowserWindow = require('electron').BrowserWindow;
 
 var mainWindow = null;
 app.on('window-all-closed', function() {
@@ -8,6 +8,6 @@ app.on('window-all-closed', function() {
 
 app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1024, height: 768, title: 'Electron-Webview-Host-to-Guest-RPC-Sample'});
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   // mainWindow.openDevTools();
 });

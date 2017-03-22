@@ -4,10 +4,10 @@
 
  This example uses the webview [preload](https://github.com/atom/electron/blob/master/docs/api/web-view-tag.md#preload) attribute to inject custom code into a remote websites page and invokes the code using the [&lt;webview&gt;.executeJavaScript](https://github.com/atom/electron/blob/master/docs/api/web-view-tag.md#webviewexecutejavascriptcode-usergesture).
 
- To run this, install electron and then run in the console
+ To run this:
  ```
 cd <PATH_FOR_SAMPLE>
-electron .
+npm install && npm start
  ```
 
  The click on one of the three buttons at the top of the page to Pause, Play or loop play and pause.

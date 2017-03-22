@@ -2,10 +2,15 @@
   "name": "Electron-Webview-Host-to-Guest-RPC-Sample",
   "version": "1.0.0",
   "main": "main.js",
+  "license": "BSD-3-Clause",
+  "repository": {
+      "type" : "git",
+      "url": "https://github.com/JavaScriptDude/Electron-Webview-Host-to-Guest-RPC-Sample.git"
+  },
   "scripts": {
     "start": "electron ."
   },
-  "devDependencies": {
-    "electron-prebuilt": "^1.4.13"
+  "dependencies": {
+    "electron": "^1.4.13"
   }
 }

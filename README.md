@@ -1,15 +1,42 @@
 # Electron Webview Host to Guest RPC Sample
 
- This is a contrived example of how to make a tool that is able to make crude RPC calls from an [electron](https://github.com/atom/electron) host app in the Renderer JS to a remote guest web page in a [webview](https://github.com/atom/electron/blob/master/docs/api/web-view-tag.md) element.
+This sample demonstrates a simple host-to-guest RPC style flow in Electron:
 
- This example uses the webview [preload](https://github.com/atom/electron/blob/master/docs/api/web-view-tag.md#preload) attribute to inject custom code into a remote websites page and invokes the code using the [&lt;webview&gt;.executeJavaScript](https://github.com/atom/electron/blob/master/docs/api/web-view-tag.md#webviewexecutejavascriptcode-usergesture).
+- Host app UI runs in the renderer process.
+- A remote YouTube page is loaded in a `<webview>`.
+- Guest-side helper functions are injected through the webview preload script (`inject.js`).
+- Host calls guest helpers via `webview.executeJavaScript(...)`.
 
- To run this:
- ```
+## Updated for modern Electron
+
+This project now targets the latest Electron from npm and removes deprecated `remote` usage.
+
+- Electron version: `^41.1.1`
+- Host renderer integration: preload bridge (`preload.js`) + `ipcMain`/`ipcRenderer`
+- Browser window security defaults used in this sample:
+	- `contextIsolation: true`
+	- `nodeIntegration: false`
+	- `webviewTag: true`
+
+## Run
+
+```bash
 cd <PATH_FOR_SAMPLE>
-npm install && npm start
- ```
+npm install
+npm start
+```
 
- The click on one of the three buttons at the top of the page to Pause, Play or loop play and pause.
+After launch, click one of the three buttons to Pause, Play, or loop play/pause.
 
- This code is based on the the cool [webview browser](https://github.com/hokein/electron-sample-apps/tree/master/webview/browser) electron sample app written by [hokein](https://github.com/hokein). Props to you @hokein!
+## Files
+
+- `main.js`: creates the `BrowserWindow`, enables webview support, and handles IPC for context menu actions.
+- `preload.js`: exposes a safe host API to the renderer.
+- `render.js`: renderer logic and webview command wiring.
+- `inject.js`: guest-side helper methods injected into the YouTube page.
+- `index.html`: host UI containing controls and the webview.
+
+## Notes
+
+- This is an educational sample and intentionally uses `webview.executeJavaScript(...)` to keep the host/guest RPC idea explicit.
+- If you build this pattern into production code, validate inputs and tighten process boundaries further.
